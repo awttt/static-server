@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="X-UV-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8"/>
+
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
+  <title>Document</title>
+  <style type="text/css">
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+  </style>
 </head>
-<body>
-    xixixixi
-    <img src="./1.png" alt="">
-    <script src="./main.js"></script>
+<link rel="stylesheet" href="style.css"/>
+
+<body >
+<header class="globalHeader">
+  <form class="searchForm" method="get" action="http://www.baidu.com/s">
+    <input name="wd" type="text"/>
+    <button type="submit">搜索</button>
+  </form>
+</header>
+<main class="globalMain">
+  <ul class="siteList">
+    <li class="last">
+      <div class="addButton">
+        <div class="icon-wrapper">
+          <svg class="icon">
+            <use xlink:href="#icon-add"></use>
+          </svg>
+        </div>
+        <div class="text">新增</div>
+      </div>
+    </li>
+  </ul>
+</main>
+<footer class="sub">
+<div></div>
+  <div class="area"></div>
+  <div class="weather"></div>
+
+</footer>
+<script src="//at.alicdn.com/t/font_1722290_0flhdob14y17.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="main.js"></script>
+<script>
+let str = ''
+  $.ajax({
+
+    url: "//saweather.market.alicloudapi.com/ip-to-weather",
+    data: {ip: '',
+    },
+    type: "get",
+
+    dataType: "json",
+    success: function (data) {
+        console.log(data.showapi_res_body)
+     for(let i in data.showapi_res_body.cityInfo){
+       str +='<div>'+data.showapi_res_body.cityInfo[i]+'<div>'
+     }
+      console.log(str)
+
+      console.log(data.showapi_res_body.f1.day_air_temperature)
+      temperature=data.showapi_res_body.f1.day_air_temperature
+      $('.area').html(str)
+      $('.weather').html(temperature)
+    },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", "APPCODE daacf04e8e8a434994f19f752ff42817");
+    }
+  })
+
+
+
+</script>
 </body>
+
+
 </html>
