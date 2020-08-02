@@ -23,11 +23,11 @@
   }
   /* style */
   body {
-    margin: 320px 0;
+    margin-bottom: 510px ;
     background-image: linear-gradient(125deg, #2c3e50, #27ae60, #2980b9, #e74c3c, #8e44ad);
     background-size: 400% 100%;
     animation: bganimation 15s infinite;
-  
+    
   }
   
   @keyframes bganimation {
@@ -173,8 +173,52 @@
     align-items: center;
   }
   
-  .sub{
-    display: flex;
-    justify-content: center;
-  }
+ 
+
+/* 天气 */
+
+.sub{
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+ .icon-weather{
+  width: 80px;
+  height: 80px;
+}
+
+.weather-window{
   
+  width: 100%;
+ left: 0px;
+ bottom:0px;
+  display: none;
+position: absolute;
+  
+}
+
+
+.weather .open{
+display: block;
+}
+
+div .weather-wrap{
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+    width:150px;
+}
+
+div .day-wrap{
+ display:flex;
+  flex-direction: row;
+  justify-content:space-between
+}
+
+div .area{
+  display:flex;
+  justify-content: center;
+}

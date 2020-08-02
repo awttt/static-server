@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="style.css"/>
 
 <body >
+  
 <header class="globalHeader">
   <form class="searchForm" method="get" action="http://www.baidu.com/s">
     <input name="wd" type="text"/>
@@ -41,45 +42,54 @@
   </ul>
 </main>
 <footer class="sub">
-<div></div>
-  <div class="area"></div>
-  <div class="weather"></div>
+  <div class='weather'>
+    <svg class="icon-weather" >
+    <use xlink:href="#icon-tianqi"></use>
+  </svg>
+  <div class='weather-window'>
+  
+    <div class='area'>文昌 文岭里</div>
+    <div class='day-wrap'>
+    <div class='today'>
+    
+      <div class='weather-wrap'>
+        <div>今天</div>
+    <div class='todayTemperature'></div>
+      </div>
+    <div class='weather-wrap'>
+      <div class='todayWeather'>雷阵雨转小雨</div>
+      <div class='today_weather_pic'>
+        <img class="today_weather_pic1" style="width: 30px;height: 30px;">
+        </div>
+      </div>
+    </div>
+      |<br>|
+    <div class='tomorrow'>
+      <div class='weather-wrap'>
+        <div>明天</div>
+    <div class='tomorrowTemperature'></div>
+      </div>
+    <div class='weather-wrap'>
+      <div class='tomorrowWeather'></div>
+      <div class='tomorrow_weather_pic'>
+        <img class="tomorrow_weather_pic1" style="width: 30px;height: 30px;">
+      </div>
+      </div>
+    </div>
+      
+    </div>
+  
+  </div>
+</div>
+  
 
 </footer>
-<script src="//at.alicdn.com/t/font_1722290_0flhdob14y17.js"></script>
+<script src="//at.alicdn.com/t/font_1722290_fwruw48poy.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 
 <script src="main.js"></script>
-<script>
-let str = ''
-  $.ajax({
-
-    url: "//saweather.market.alicloudapi.com/ip-to-weather",
-    data: {ip: '',
-    },
-    type: "get",
-
-    dataType: "json",
-    success: function (data) {
-        console.log(data.showapi_res_body)
-     for(let i in data.showapi_res_body.cityInfo){
-       str +='<div>'+data.showapi_res_body.cityInfo[i]+'<div>'
-     }
-      console.log(str)
-
-      console.log(data.showapi_res_body.f1.day_air_temperature)
-      temperature=data.showapi_res_body.f1.day_air_temperature
-      $('.area').html(str)
-      $('.weather').html(temperature)
-    },
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Authorization", "APPCODE daacf04e8e8a434994f19f752ff42817");
-    }
-  })
 
 
-
-</script>
 </body>
 
 
